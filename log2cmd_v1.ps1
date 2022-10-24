@@ -100,7 +100,7 @@ foreach($line in $data314) {
 }
 foreach($line in $data400) {
     Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
-    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {0}\{3}SUP.sup`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value.replace("`n","").replace("`r","")
+    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {0}\{3}SUP.sup`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value.replace(" ","").replace("`n","").replace("`r","")
 }
 Write-Output($out)
 Add-Content $args[1] $out
