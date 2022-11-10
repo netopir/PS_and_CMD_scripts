@@ -4,13 +4,13 @@ $fname = [RegEx]::Matches($file, "eac3to.exe\s+(.*)\s+(\d+)\)")
 $dname = [RegEx]::Matches($file, "-log=(.*)\\")
 $data100 = [RegEx]::Matches($file, "(\d+): Chapters, (.*)")
 $data400 = [RegEx]::Matches($file, "(\d+): Subtitle \(PGS\), (.*)")
-$data201 = [RegEx]::Matches($file, "(\d+): (h265\/HEVC), (2160p24) (.*)")
-$data202 = [RegEx]::Matches($file, "(\d+): (h265\/HEVC), (1080p24) (.*)")
-$data203 = [RegEx]::Matches($file, "(\d+): (h264\/AVC), (1080p24) (.*)")
-$data204 = [RegEx]::Matches($file, "(\d+): (h264\/AVC  \(left eye\)), (1080p24) (.*)")
-$data205 = [RegEx]::Matches($file, "(\d+): (h264\/MVC \(right eye\)), (1080p24) (.*)")
-$data206 = [RegEx]::Matches($file, "(\d+): (MPEG2), (1080p24) (.*)")
-$data207 = [RegEx]::Matches($file, "(\d+): (VC-1), (1080p24) (.*)")
+$data201 = [RegEx]::Matches($file, "(\d+): (h265\/HEVC), (2160p\d+) (.*)")
+$data202 = [RegEx]::Matches($file, "(\d+): (h265\/HEVC), (1080p\d+) (.*)")
+$data203 = [RegEx]::Matches($file, "(\d+): (h264\/AVC), (1080p\d+) (.*)")
+$data204 = [RegEx]::Matches($file, "(\d+): (h264\/AVC  \(left eye\)), (1080p\d+) (.*)")
+$data205 = [RegEx]::Matches($file, "(\d+): (h264\/MVC \(right eye\)), (1080p\d+) (.*)")
+$data206 = [RegEx]::Matches($file, "(\d+): (MPEG2), (1080p\d+) (.*)")
+$data207 = [RegEx]::Matches($file, "(\d+): (VC-1), (1080p\d+) (.*)")
 $data301 = [RegEx]::Matches($file, "(\d+): (TrueHD\/AC3 \(Atmos\)), (\w+(?: \w+)?), (.*), (.*)[\n\r][\s+](.*), (.*), (.*), (.*)")
 $data302 = [RegEx]::Matches($file, "(\d+): (TrueHD\/AC3), (\w+(?: \w+)?), (.*), (.*)[\n\r][\s+](.*), (.*), (.*), (.*)")
 $data303 = [RegEx]::Matches($file, "(\d+): (TrueHD), (\w+(?: \w+)?), (.*), (.*), (.*)")
@@ -112,7 +112,7 @@ foreach($line in $data313) {
 }
 foreach($line in $data314) {
     #Write-output($line.Groups[1].value, $line.Groups[2].value, $line.Groups[3].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
-    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {5}\[{2}]_{4}PCM.wav`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value.replace(" ",""), $dname[0].Groups[1].value
+    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {5}\[{2}]_{4}PCM.wav`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $line.Groups[3].value.replace(" ",""), $dname[0].Groups[1].value
 }
 foreach($line in $data400) {
     #Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
