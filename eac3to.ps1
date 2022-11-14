@@ -89,6 +89,6 @@ timeout /t 2 | Out-Null
 #PowerShell: Pause for 2 seconds
 timeout /t 2 | Out-Null
 #PowerShell: run the remux
-& cmd @('/c', $FileNameremux )
+# ???
 #PowerShell: Press any key to continue . . .
 read-host "Press ENTER to continue..."
