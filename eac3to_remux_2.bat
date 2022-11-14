@@ -1,4 +1,6 @@
 @echo off
+setlocal
+REM
 title "Remux with Eac3to"
 REM
 set eac3todirectory=C:\BRtools\eac3to\eac3to.exe
@@ -46,6 +48,7 @@ move /y  ~.txt "%destination%\%subfolder%\@remux.txt"
 REM
 timeout /t 2 /nobreak > nul
 REM
+echo [90m"Remove spaces @remux_all"[0m
 for /f "usebackq tokens=* delims=" %%a in ("%destination%\%subfolder%\@remux_all.txt") do (echo(%%a)>>~.txt
 move /y  ~.txt "%destination%\%subfolder%\@remux_all.txt"
 REM
@@ -54,6 +57,7 @@ REM
 echo [90m"Run @remux"[0m
 cmd < "%destination%\%subfolder%"\@remux.txt
 REM
+endlocal
 pause
 REM
 EXIT /B 0
