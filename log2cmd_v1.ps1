@@ -9,8 +9,10 @@ $data202 = [RegEx]::Matches($file, "(\d+): (h265\/HEVC), (1080p\d+) (.*)")
 $data203 = [RegEx]::Matches($file, "(\d+): (h264\/AVC), (1080p\d+) (.*)")
 $data204 = [RegEx]::Matches($file, "(\d+): (h264\/AVC  \(left eye\)), (1080p\d+) (.*)")
 $data205 = [RegEx]::Matches($file, "(\d+): (h264\/MVC \(right eye\)), (1080p\d+) (.*)")
-$data206 = [RegEx]::Matches($file, "(\d+): (MPEG2), (1080p\d+) (.*)")
-$data207 = [RegEx]::Matches($file, "(\d+): (VC-1), (1080p\d+) (.*)")
+$data206 = [RegEx]::Matches($file, "(\d+): (h264\/AVC), (480p\d+) (.*)")
+$data207 = [RegEx]::Matches($file, "(\d+): (MPEG2), (1080p\d+) (.*)")
+$data208 = [RegEx]::Matches($file, "(\d+): (VC-1), (1080p\d+) (.*)")
+$data209 = [RegEx]::Matches($file, "(\d+): (VC-1), (480p\d+) (.*)")
 $data301 = [RegEx]::Matches($file, "(\d+): (TrueHD\/AC3 \(Atmos\)), (\w+(?: \w+)?), (.*), (.*)[\n\r][\s+](.*), (.*), (.*), (.*)")
 $data302 = [RegEx]::Matches($file, "(\d+): (TrueHD\/AC3), (\w+(?: \w+)?), (.*), (.*)[\n\r][\s+](.*), (.*), (.*), (.*)")
 $data303 = [RegEx]::Matches($file, "(\d+): (TrueHD), (\w+(?: \w+)?), (.*), (.*), (.*)")
@@ -52,9 +54,17 @@ foreach($line in $data205) {
 }
 foreach($line in $data206) {
     #Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
-    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {4}\[{2}]_Video.mpeg2`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $dname[0].Groups[1].value
+    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {4}\[{2}]_Video.h264`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $dname[0].Groups[1].value
 }
 foreach($line in $data207) {
+    #Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
+    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {4}\[{2}]_Video.mpeg2`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $dname[0].Groups[1].value
+}
+foreach($line in $data208) {
+    #Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
+    $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {4}\[{2}]_Video.vc1`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $dname[0].Groups[1].value
+}
+foreach($line in $data209) {
     #Write-output($line.Groups[1].value, $line.Groups[2].value, $fname[0].Groups[1].value, $fname[0].Groups[2].value)
     $out += "C:\BRtools\eac3to\eac3to.exe {0} {1}) {2}: {4}\[{2}]_Video.vc1`r`n" -f $fname[0].Groups[1].value, $fname[0].Groups[2].value, $line.Groups[1].value, $line.Groups[2].value, $dname[0].Groups[1].value
 }
