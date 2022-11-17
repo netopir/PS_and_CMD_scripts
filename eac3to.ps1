@@ -1,20 +1,19 @@
+# Install from Powershell Gallery https://www.powershellgallery.com/packages/PSWriteColor
+# Install-Module -Name PSWriteColor
 #PowerShell: Set the location to eac3to programm
 $eac3toPath = "C:\BRtools\eac3to\eac3to.exe"
 #PowerShell: Set the directory of the Source Path
 $source = Read-Host -Prompt (Write-Color "Enter Source Path: " -Color DarkMagenta -NoNewLine)
-#$source = Read-Host -Prompt "Enter Source Path"
 #PowerShell: scan the BluRay directory
 Write-Host "Reading BluRay" -ForegroundColor DarkCyan
 & cmd @('/c', $eac3toPath, $source )
 #PowerShell: enter the playlist number from the scaned BluRay
 $playlist = Read-Host -Prompt (Write-Color "Enter Play List: " -Color DarkMagenta -NoNewLine)
-#$playlist = Read-Host -Prompt "Enter Play List"
 #PowerShell: result from the choisen Playlist
 Write-Host "Content of BluRay" -ForegroundColor DarkCyan
 & cmd @('/c', $eac3toPath, $source, "$($playlist))" )
 #PowerShell: Set the directory of the destination Path
 $destination = Read-Host -Prompt (Write-Color "Enter Destination Path: " -Color DarkMagenta -NoNewLine)
-#$destination = Read-Host -Prompt "Enter Destination Path"
 #PowerShell: Pause for 2 seconds
 timeout /t 2 | Out-Null
 #PowerShell: Get-Item cmdlet to check if folder exists or not and create directory if not exists.
